@@ -1,106 +1,34 @@
 import Image from "next/image";
 import Intro from "./intro";
+import { GpaCounter, HeroScene, PortfolioNav } from "./portfolio-motion";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#F6F3EC] text-[#3A1F1B] selection:bg-[#7C251D] selection:text-[#F6F3EC] relative overflow-x-hidden">
       <a className="skip-link" href="#main">Skip to content</a>
       <Intro />
-      <header
-        className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-3xl transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] delay-150 opacity-100 translate-y-0`}
-      >
-        <nav aria-label="Main navigation" className="bg-[#FAF8F5]/90 backdrop-blur-md rounded-2xl px-5 py-2.5 shadow-[0_8px_30px_rgb(124,37,29,0.06)] flex items-center justify-between border border-[#7C251D]/10">
-          <a href="#hero" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 bg-[#7C251D] text-[#F6F3EC] rounded-lg flex items-center justify-center font-serif-italic text-lg tracking-wider group-hover:scale-105 transition duration-300">
-              A
-            </div>
-            <span className="font-bold tracking-[0.2em] text-xs uppercase text-[#7C251D]">
-              AVISA
-            </span>
-          </a>
-          <ul className="desktop-nav hidden md:flex items-center gap-10 text-[11px] font-medium tracking-[0.2em] text-[#73534D] uppercase">
-            <li>
-              <a
-                href="#about"
-                className="hover:text-[#7C251D] transition relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1.5px] after:bg-[#7C251D] hover:after:w-full after:transition-all"
-              >
-                About
-              </a>
-            </li>
-            <li>
-              <a
-                href="#experience"
-                className="hover:text-[#7C251D] transition relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1.5px] after:bg-[#7C251D] hover:after:w-full after:transition-all"
-              >
-                Work
-              </a>
-            </li>
-            <li>
-              <a
-                href="#expertise"
-                className="hover:text-[#7C251D] transition relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1.5px] after:bg-[#7C251D] hover:after:w-full after:transition-all"
-              >
-                Skills
-              </a>
-            </li>
-            <li>
-              <a
-                href="#achievements"
-                className="hover:text-[#7C251D] transition relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1.5px] after:bg-[#7C251D] hover:after:w-full after:transition-all"
-              >
-                Honors
-              </a>
-            </li>
-          </ul>
-          <a
-            href="#contact"
-            className="border border-[#7C251D] text-[#7C251D] rounded-xl px-5 py-2 text-xs font-semibold tracking-wide hover:bg-[#7C251D] hover:text-[#F6F3EC] active:scale-95 transition duration-300"
-          >
-            Contact
-          </a>
-        </nav>
-        <details className="mobile-nav md:hidden">
-          <summary>Menu <span aria-hidden="true">＋</span></summary>
-          <nav aria-label="Mobile navigation">
-            <a href="#about">About</a><a href="#experience">Work</a>
-            <a href="#expertise">Skills</a><a href="#achievements">Honors</a>
-            <a href="#contact">Contact</a>
-          </nav>
-        </details>
-      </header>
+      <PortfolioNav />
       <main id="main">
       <section
-        id="hero"
+        id="hero" tabIndex={-1}
         className="hero-section relative min-h-[700px] h-svh w-full flex items-end justify-center overflow-hidden pt-24"
       >
         <h1 className="sr-only">Avisa Traghania — Industrial Engineering</h1>
-        <div className="hero-marquee" aria-hidden="true">
-          <div className="hero-marquee-track">
-            <span>AVISA TRAGHANIA&nbsp;·&nbsp;</span>
-            <span>AVISA TRAGHANIA&nbsp;·&nbsp;</span>
-          </div>
-        </div>
-        <div
-          className={`absolute left-8 md:left-16 bottom-12 z-30 hero-tagline max-w-xs transition-all duration-1000 delay-500 opacity-100 translate-y-0`}
-        >
-          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#7C251D] mb-1">
-            Industrial Engineering
-          </p>
-          <p className="text-sm font-medium text-[#5A3E3A] leading-snug">
-            Risk Management, Lean Manufacturing, Strategic Planning &amp; Public
-            Relations.
-          </p>
-        </div>
-        <div className="hero-portrait">
-          <Image src="/images/avisa-original.jpeg" alt="Avisa Traghania seated, wearing a black hijab and blouse with blue jeans" unoptimized fill sizes="(max-width: 767px) 95vw, 620px" preload className="portrait-photo" />
-        </div>
+        <HeroScene
+          portrait={<Image src="/images/avisa-original.jpeg" alt="Avisa Traghania seated, wearing a black hijab and blouse with blue jeans" unoptimized fill sizes="(max-width: 767px) 80vw, 490px" preload className="portrait-photo" />}
+          metadata={<div className="hero-tagline reveal-item">
+            <p className="metadata-mask"><span className="metadata-line">Industrial Engineering</span></p>
+            <p className="metadata-mask"><span className="metadata-line">Risk Management, Lean Manufacturing,</span></p>
+            <p className="metadata-mask"><span className="metadata-line">Strategic Planning &amp; Public Relations.</span></p>
+          </div>}
+        />
       </section>
       <section
-        id="about"
+        id="about" tabIndex={-1}
         className="py-28 px-6 md:px-16 max-w-6xl mx-auto border-t border-[#7C251D]/15"
       >
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
-          <div className="md:col-span-4 reveal-item transition-all duration-700 ease-out">
+          <div className="md:col-span-4 reveal-item">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7C251D] block mb-2">
               01 / Profile
             </span>
@@ -110,20 +38,20 @@ export default function Home() {
           </div>
 
           <div className="md:col-span-8 space-y-8">
-            <p className="reveal-item transition-all duration-700 ease-out text-xl md:text-2xl font-normal leading-relaxed text-[#4A2C27]">
+            <p className="bio-copy reveal-item text-xl md:text-2xl font-normal leading-relaxed text-[#4A2C27]">
               Undergraduate{" "}
-              <span className="font-semibold text-[#7C251D] underline decoration-[#7C251D]/40 decoration-1 underline-offset-4">
+              <span className="bio-keyword font-semibold text-[#7C251D]">
                 Industrial Engineering
               </span>{" "}
               student with experience in academic and organizational activities.
               Skilled in problem-solving, critical thinking, and teamwork with a
               strong interest in{" "}
-              <span className="font-semibold text-[#7C251D]">
+              <span className="bio-keyword font-semibold text-[#7C251D]">
                 Risk Management, Lean Manufacturing, and Public Relations
               </span>
               .
             </p>
-            <div className="reveal-item transition-all duration-700 ease-out bg-[#FAF8F5] rounded-2xl p-6 md:p-8 border border-[#7C251D]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm hover:shadow-md">
+            <div className="education-card reveal-item bg-[#FAF8F5] rounded-2xl p-6 md:p-8 border border-[#7C251D]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm hover:shadow-md">
               <div>
                 <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#73534D]">
                   Education
@@ -141,7 +69,7 @@ export default function Home() {
                   Cumulative GPA
                 </span>
                 <span className="text-2xl font-bold tracking-tight">
-                  3.76{" "}
+                  <GpaCounter />{" "}
                   <span className="text-sm font-normal text-[#E6C8C3]">
                     / 4.00
                   </span>
@@ -152,10 +80,10 @@ export default function Home() {
         </div>
       </section>
       <section
-        id="experience"
+        id="experience" tabIndex={-1}
         className="py-28 px-6 md:px-16 max-w-6xl mx-auto border-t border-[#7C251D]/15"
       >
-        <div className="reveal-item transition-all duration-700 ease-out flex flex-col md:flex-row md:items-end justify-between mb-16">
+        <div className="reveal-item flex flex-col md:flex-row md:items-end justify-between mb-16">
           <div>
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7C251D] block mb-2">
               02 / Track Record
@@ -170,8 +98,8 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="divide-y divide-[#7C251D]/15">
-          <div className="reveal-item transition-all duration-700 ease-out exp-row py-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-start group">
+        <div className="experience-list">
+          <div className="reveal-item exp-row py-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-start group">
             <div className="md:col-span-3">
               <span className="text-xs font-semibold uppercase tracking-widest px-3 py-1 bg-[#7C251D] text-[#F6F3EC] rounded-full">
                 Internship
@@ -181,7 +109,7 @@ export default function Home() {
               </p>
             </div>
             <div className="md:col-span-6">
-              <h3 className="text-2xl font-bold text-[#3A1F1B] group-hover:text-[#7C251D] group-hover:translate-x-2 transition-all duration-300">
+              <h3 className="text-2xl font-bold text-[#3A1F1B] group-hover:text-[#7C251D] transition-colors">
                 Internship — PT Pertamina Hulu Rokan
               </h3>
               <p className="text-sm text-[#5A3E3A] mt-2 leading-relaxed">
@@ -196,7 +124,7 @@ export default function Home() {
               </span>
             </div>
           </div>
-          <div className="reveal-item transition-all duration-700 ease-out exp-row py-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-start group">
+          <div className="reveal-item exp-row py-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-start group">
             <div className="md:col-span-3">
               <span className="text-xs font-semibold uppercase tracking-widest text-[#7C251D]">
                 Jan 2025 — Present
@@ -206,7 +134,7 @@ export default function Home() {
               </p>
             </div>
             <div className="md:col-span-6">
-              <h3 className="text-xl font-bold text-[#3A1F1B] group-hover:text-[#7C251D] group-hover:translate-x-2 transition-all duration-300">
+              <h3 className="text-xl font-bold text-[#3A1F1B] group-hover:text-[#7C251D] transition-colors">
                 Laboratory Assistant — Innovation &amp; Organizational
                 Development
               </h3>
@@ -229,7 +157,7 @@ export default function Home() {
               </span>
             </div>
           </div>
-          <div className="reveal-item transition-all duration-700 ease-out exp-row py-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-start group">
+          <div className="reveal-item exp-row py-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-start group">
             <div className="md:col-span-3">
               <span className="text-xs font-semibold uppercase tracking-widest text-[#7C251D]">
                 October 2025
@@ -239,7 +167,7 @@ export default function Home() {
               </p>
             </div>
             <div className="md:col-span-6">
-              <h3 className="text-xl font-bold text-[#3A1F1B] group-hover:text-[#7C251D] group-hover:translate-x-2 transition-all duration-300">
+              <h3 className="text-xl font-bold text-[#3A1F1B] group-hover:text-[#7C251D] transition-colors">
                 Authoring Team Member — Business Model Canvas
               </h3>
               <p className="text-sm text-[#5A3E3A] mt-2 leading-relaxed">
@@ -259,7 +187,7 @@ export default function Home() {
               </span>
             </div>
           </div>
-          <div className="reveal-item transition-all duration-700 ease-out exp-row py-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-start group">
+          <div className="reveal-item exp-row py-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-start group">
             <div className="md:col-span-3">
               <span className="text-xs font-semibold uppercase tracking-widest text-[#7C251D]">
                 Jun 2025 — Jan 2026
@@ -269,7 +197,7 @@ export default function Home() {
               </p>
             </div>
             <div className="md:col-span-6">
-              <h3 className="text-xl font-bold text-[#3A1F1B] group-hover:text-[#7C251D] group-hover:translate-x-2 transition-all duration-300">
+              <h3 className="text-xl font-bold text-[#3A1F1B] group-hover:text-[#7C251D] transition-colors">
                 Program Coordinator — &ldquo;Staff of the Month&rdquo;
                 Initiative
               </h3>
@@ -285,7 +213,7 @@ export default function Home() {
               </span>
             </div>
           </div>
-          <div className="reveal-item transition-all duration-700 ease-out exp-row py-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-start group">
+          <div className="reveal-item exp-row py-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-start group">
             <div className="md:col-span-3">
               <span className="text-xs font-semibold uppercase tracking-widest text-[#7C251D]">
                 May 2026 — Present
@@ -295,7 +223,7 @@ export default function Home() {
               </p>
             </div>
             <div className="md:col-span-6">
-              <h3 className="text-xl font-bold text-[#3A1F1B] group-hover:text-[#7C251D] group-hover:translate-x-2 transition-all duration-300">
+              <h3 className="text-xl font-bold text-[#3A1F1B] group-hover:text-[#7C251D] transition-colors">
                 Career Buddy — Department Pengembangan Karier dan Alumni
               </h3>
               <p className="text-sm text-[#5A3E3A] mt-2 leading-relaxed">
@@ -313,10 +241,10 @@ export default function Home() {
         </div>
       </section>
       <section
-        id="expertise"
+        id="expertise" tabIndex={-1}
         className="py-28 px-6 md:px-16 max-w-6xl mx-auto border-t border-[#7C251D]/15"
       >
-        <div className="reveal-item transition-all duration-700 ease-out mb-16">
+        <div className="reveal-item mb-16">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7C251D] block mb-2">
             03 / Capabilities
           </span>
@@ -325,8 +253,8 @@ export default function Home() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="reveal-item transition-all duration-700 ease-out bg-[#FAF8F5] p-8 rounded-2xl border border-[#7C251D]/15 flex flex-col justify-between hover:-translate-y-1.5">
+        <div className="skills-grid grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="skill-card reveal-item bg-[#FAF8F5] p-8 rounded-2xl border border-[#7C251D]/15 flex flex-col justify-between ">
             <div>
               <span className="text-xs font-mono uppercase text-[#73534D]">
                 01 / Hard Skills
@@ -345,10 +273,11 @@ export default function Home() {
                   "Lean Manufacturing",
                   "Engineering Economics",
                   "Public Relations",
-                ].map((skill) => (
+                ].map((skill, index) => (
                   <span
                     key={skill}
-                    className="px-3 py-1.5 bg-[#EFECE4] hover:bg-[#7C251D] hover:text-[#F6F3EC] transition-colors text-[#3A1F1B] rounded-lg text-xs font-medium cursor-default"
+                    style={{ "--pill-delay": `${index * .03}s` } as React.CSSProperties}
+                    className="skill-pill px-3 py-1.5 bg-[#EFECE4] text-[#3A1F1B] rounded-lg text-xs font-medium cursor-default"
                   >
                     {skill}
                   </span>
@@ -356,7 +285,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="reveal-item transition-all duration-700 ease-out bg-[#7C251D] text-[#F6F3EC] p-8 rounded-2xl flex flex-col justify-between shadow-md hover:-translate-y-1.5">
+          <div className="skill-card reveal-item bg-[#7C251D] text-[#F6F3EC] p-8 rounded-2xl flex flex-col justify-between shadow-md ">
             <div>
               <span className="text-xs font-mono uppercase text-[#E6C8C3]">
                 02 / Software
@@ -377,15 +306,15 @@ export default function Home() {
                 ].map((tool) => (
                   <div
                     key={tool}
-                    className="p-3 rounded-xl bg-white/10 hover:bg-white/20 transition font-medium"
+                    className="tool-box p-3 rounded-xl bg-white/10 font-medium"
                   >
-                    {tool}
+                    <span>{tool}</span>
                   </div>
                 ))}
               </div>
             </div>
           </div>
-          <div className="reveal-item transition-all duration-700 ease-out bg-[#FAF8F5] p-8 rounded-2xl border border-[#7C251D]/15 flex flex-col justify-between hover:-translate-y-1.5">
+          <div className="skill-card reveal-item bg-[#FAF8F5] p-8 rounded-2xl border border-[#7C251D]/15 flex flex-col justify-between ">
             <div>
               <span className="text-xs font-mono uppercase text-[#73534D]">
                 03 / Soft Skills
@@ -393,7 +322,7 @@ export default function Home() {
               <h3 className="text-xl font-bold mt-2 mb-6 text-[#3A1F1B]">
                 Leadership &amp; Interpersonal
               </h3>
-              <ul className="space-y-2.5 text-sm font-medium text-[#5A3E3A]">
+              <ul className="soft-skills space-y-2.5 text-sm font-medium text-[#5A3E3A]">
                 {[
                   "Public Speaking",
                   "Leadership",
@@ -406,10 +335,10 @@ export default function Home() {
                 ].map((soft) => (
                   <li
                     key={soft}
-                    className="flex items-center justify-between border-b border-[#7C251D]/10 pb-2"
+                    className="soft-skill flex items-center justify-between pb-2"
                   >
                     <span>{soft}</span>
-                    <span className="text-xs text-[#7C251D] font-semibold">
+                    <span className="core-badge text-xs text-[#7C251D] font-semibold">
                       Core
                     </span>
                   </li>
@@ -420,11 +349,11 @@ export default function Home() {
         </div>
       </section>
       <section
-        id="achievements"
+        id="achievements" tabIndex={-1}
         className="py-28 px-6 md:px-16 max-w-6xl mx-auto border-t border-[#7C251D]/15"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="reveal-item transition-all duration-700 ease-out">
+          <div className="reveal-item">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7C251D] block mb-2">
               04 / Recognition
             </span>
@@ -433,8 +362,8 @@ export default function Home() {
             </h2>
 
             <div className="space-y-4">
-              <div className="bg-[#FAF8F5] p-6 rounded-2xl border border-[#7C251D]/15 hover:-translate-y-1 transition duration-300">
-                <div className="flex items-center justify-between text-xs text-[#73534D] mb-2">
+              <div className="recognition-card reveal-item bg-[#FAF8F5] p-6 rounded-2xl border border-[#7C251D]/15  transition duration-300">
+                <div className="recognition-meta flex flex-wrap gap-2 items-center justify-between text-xs text-[#73534D] mb-2">
                   <span className="font-semibold uppercase tracking-wider text-[#7C251D]">
                     International Program Competition
                   </span>
@@ -449,8 +378,8 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="bg-[#FAF8F5] p-6 rounded-2xl border border-[#7C251D]/15 hover:-translate-y-1 transition duration-300">
-                <div className="flex items-center justify-between text-xs text-[#73534D] mb-2">
+              <div className="recognition-card reveal-item bg-[#FAF8F5] p-6 rounded-2xl border border-[#7C251D]/15  transition duration-300">
+                <div className="recognition-meta flex flex-wrap gap-2 items-center justify-between text-xs text-[#73534D] mb-2">
                   <span className="font-semibold uppercase tracking-wider text-[#7C251D]">
                     Speaker Representation
                   </span>
@@ -466,7 +395,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="reveal-item transition-all duration-700 ease-out">
+          <div className="reveal-item">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7C251D] block mb-2">
               05 / Credentials
             </span>
@@ -474,7 +403,7 @@ export default function Home() {
               Certifications
             </h2>
 
-            <div className="bg-[#7C251D] text-[#F6F3EC] p-8 rounded-2xl flex flex-col justify-between min-h-64 shadow-md hover:-translate-y-1 transition duration-300">
+            <div className="credential-card reveal-item bg-[#7C251D] text-[#F6F3EC] p-8 rounded-2xl flex flex-col justify-between min-h-64 shadow-md  transition duration-300">
               <div>
                 <span className="px-3 py-1 bg-white/15 rounded-full text-xs uppercase tracking-widest">
                   Certification (2025)
@@ -494,24 +423,24 @@ export default function Home() {
       </section>
       </main>
       <footer
-        id="contact"
+        id="contact" tabIndex={-1}
         className="border-t border-[#7C251D]/20 bg-[#EFECE4] text-[#7C251D] py-20 px-6 md:px-16 mt-12"
       >
-        <div className="reveal-item transition-all duration-700 ease-out max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-end justify-between gap-12">
+        <div className="footer-content reveal-item max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-end justify-between gap-12">
           <div>
             <span className="text-xs uppercase tracking-[0.25em] text-[#73534D] block mb-4 font-semibold">
               Get in touch
             </span>
-            <h2 className="font-display text-5xl md:text-7xl font-bold tracking-tight text-[#7C251D]">
-              Let&apos;s Connect.
+            <h2 className="footer-heading reveal-item font-display text-5xl md:text-7xl font-bold tracking-tight text-[#7C251D]">
+              <span>Let&apos;s Connect.</span>
             </h2>
           </div>
 
-          <div className="space-y-3 text-sm md:text-right">
+          <div className="footer-contact space-y-3 text-sm md:text-right">
             <p className="text-[#6E504B] font-medium">Bogor, Indonesia</p>
             <a
               href="mailto:avisatraghaniaa@gmail.com"
-              className="inline-flex items-center gap-3 text-lg font-bold text-[#7C251D] hover:opacity-75 transition group"
+              className="contact-email inline-flex items-center gap-3 text-lg font-bold text-[#7C251D] group"
             >
               <svg aria-hidden="true"
                 className="w-7 h-5 stroke-[#7C251D] group-hover:-translate-y-0.5 transition-transform"
@@ -539,7 +468,7 @@ export default function Home() {
                   strokeDasharray="1.5 2"
                 />
               </svg>
-              <span>avisatraghaniaa@gmail.com</span>
+              <span className="email-label">avisatraghaniaa@gmail.com</span>
             </a>
           </div>
         </div>

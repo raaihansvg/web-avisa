@@ -35,7 +35,7 @@ export default function Intro() {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("revealed");
+          entry.target.classList.add("is-in-view");
           observer.unobserve(entry.target);
         }
       });
