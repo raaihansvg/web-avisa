@@ -37,3 +37,7 @@ At the owner's request, removed replay, side arrow controls, scroll prompt and i
 ## Latest portrait composition
 
 Owner supplied and approved the beach portrait (`docs/fotoavisa.png`, also attached in chat). Built-in imagegen produced `public/images/avisa-cutout.png` with transparency. Prompt: remove beach background only, preserve facial identity/expression, pose, glasses, beige hijab, cream cardigan, black dress, hands and bracelets; tight crop; natural alpha edges; no frame, text, shadow or halo. The hero places this cutout over the moving outline text, without the oval frame or portrait badge. Light color styling remains in CSS. This supersedes the earlier blazer portrait.
+
+## Original-photo replacement — 17 November 2026
+
+Owner explicitly requested the latest `docs/AVISAA.jpeg` with no AI changes to face or body. It is copied byte-for-byte to `public/images/avisa-original.jpeg`, replacing the generated cutout in the hero. Next Image uses `unoptimized` to serve the source file without re-encoding. CSS preserves aspect ratio and the whole image (`object-fit: contain`), removes the earlier color filter, and uses multiply blending on the portrait container to integrate the white background with the cream page. No generative tools, retouching, background extraction, body/face modifications, or image-file transformations were used for this replacement. Earlier generated-cutout notes are superseded.

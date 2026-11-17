@@ -60,8 +60,8 @@ button, summary { cursor: pointer; }
 @media (max-width: 767px) { .hero-marquee { top: 30%; } }
 @media (prefers-reduced-motion: reduce) { .hero-marquee-track { animation: none; } }
 
-.hero-portrait { position: absolute; z-index: 20; bottom: 0; left: 50%; transform: translateX(-50%); height: min(88svh, 960px); width: min(62svh, 620px); pointer-events: none; }
-.portrait-photo { object-fit: contain; object-position: center bottom; filter: saturate(.88) sepia(.05) contrast(.98); }
+.hero-portrait { position: absolute; z-index: 20; bottom: 0; left: 50%; transform: translateX(-50%); height: min(88svh, 960px); width: min(62svh, 620px); pointer-events: none; mix-blend-mode: multiply; }
+.portrait-photo { object-fit: contain; object-position: center bottom; }
 .hero-marquee { top: 34%; }
 @media (max-width: 767px) {
   .hero-portrait { width: 95vw; height: 68svh; bottom: 7.5rem; max-height: 630px; }

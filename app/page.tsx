@@ -92,7 +92,7 @@ export default function Home() {
           </p>
         </div>
         <div className="hero-portrait">
-          <Image src="/images/avisa-cutout.png" alt="Avisa Traghania wearing a beige hijab and cream cardigan" fill sizes="(max-width: 767px) 95vw, 620px" preload className="portrait-photo" />
+          <Image src="/images/avisa-original.jpeg" alt="Avisa Traghania seated, wearing a black hijab and blouse with blue jeans" unoptimized fill sizes="(max-width: 767px) 95vw, 620px" preload className="portrait-photo" />
         </div>
       </section>
       <section
